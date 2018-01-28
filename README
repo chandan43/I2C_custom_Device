@@ -1,0 +1,22 @@
+Arduino I2c Custum Dev :  Firmware and Driver -
+
+Step 1: Configure your arduino I2C firmware for address 0x48(any)
+        1. Open arduino_prog, paste it in arduino IDE and burn it.
+Step 2: Cross compile your driver sources 
+	#make ARCH=arm CROSS_COMPILE=arm-linux-
+	#Copy rduinoi2c.ko file to your BBB target board 
+	#load using insmode tool 
+	  #insmod arduinoi2c.ko
+	#unload module 
+	  #rmmod arduinoi2c.ko
+Step 3: Use case 
+        1. LED ON: 
+	   echo 1 >/sys/I2C-Arduino/ledstatus
+	   Result:  arduino board led will glow
+	2. LED OFF 
+	   echo 0 >/sys/I2C-Arduino/ledstatus
+	   Result:  arduino board led will be off.
+        3. Send data 	
+	   echo "any data" >/sys/I2C-Arduino/ledstatus
+
+Note :- Use arduino serial monitor for debugging. 

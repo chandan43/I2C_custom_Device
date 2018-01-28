@@ -1,0 +1,10 @@
+&i2c2 {
+        status = "okay";
+
+        /*Node for I2c custom Arduino SA Uno R3*/
+        i2c_Arduino: i2carduio@48 {
+                compatible = "i2c-arduino";
+                reg = <0x48>;
+        };
+};
+
